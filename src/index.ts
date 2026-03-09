@@ -6,7 +6,7 @@ if (process.argv.includes('--terminal-login')) {
   const { spawnSync } = await import('node:child_process')
   const isWindows = platform() === 'win32'
   const cmd = process.env.PI_ACP_PI_COMMAND ?? (isWindows ? 'pi.cmd' : 'pi')
-  const res = spawnSync(cmd, [], { stdio: 'inherit', env: process.env, shell: isWindows })
+  const res = spawnSync(cmd, [], { stdio: 'inherit', env: process.env })
 
   if ((res as any).error && (res as any).error.code === 'ENOENT') {
     process.stderr.write(
