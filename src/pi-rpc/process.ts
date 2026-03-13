@@ -136,7 +136,8 @@ export class PiRpcProcess {
     const child = spawn(cmd, args, {
       cwd: params.cwd,
       stdio: 'pipe',
-      env: process.env
+      env: process.env,
+      shell: isWindows
     })
 
     // Ensure spawn failures (e.g. ENOENT when pi isn't installed) are surfaced as a
